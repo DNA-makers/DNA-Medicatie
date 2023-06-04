@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('variant', function (Blueprint $table) {
+        Schema::create('gen', function (Blueprint $table) {
             $table->id('id');
-            $table->foreignId('gen_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('gen_code');
-            $table->string('allel_a')->nullable();
-            $table->string('allel_b')->nullable();
-            $table->boolean('unphased')->nullable();
-            $table->text('covered');
-            $table->text('not_covered');
+            $table->string('diplotype');
+            $table->string('phenotype');
+            $table->boolean('divergent');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('variant');
+        Schema::dropIfExists('gen');
     }
 };
