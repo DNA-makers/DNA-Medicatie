@@ -14,10 +14,15 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
+        $hospitalIds = DB::table('hospital')->pluck('id')->toArray();
 
         for ($i = 0; $i < 10; $i++) {
+            $hospitalId = $faker->randomElement($hospitalIds);
+            $hospitalName = DB::table('hospital')->where('id', $hospitalId)->value('name');
+
             DB::table('users')->insert([
-                'hospital' => $faker->randomElement(['LUMC', 'AMC', 'EMC']),
+                'hospital_id' => $hospitalId,
+                'hospital_name' => $hospitalName,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
