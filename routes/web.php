@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/example', function (Request $request) {
+    return response()->json([
+        'message' => 'Hello from Laravel API!'
+    ]);
+});
+
+
+Route::get('/gen', [GenController::class, 'gen']);
+
+Route::get('/gen/{id}', [GenController::class, 'gen_specific']);
