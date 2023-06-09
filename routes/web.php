@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenController;
 
@@ -24,7 +25,10 @@ Route::get('/example', function (Request $request) {
     ]);
 });
 
-
+//Gen
 Route::get('/gen', [GenController::class, 'gen']);
-
 Route::get('/gen/{id}', [GenController::class, 'gen_specific']);
+
+//Users
+Route::get('/user', [UserController::class, 'user']);
+Route::get('/user/{id}', [UserController::class, 'user_specific']);
