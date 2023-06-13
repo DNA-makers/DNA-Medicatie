@@ -4,7 +4,6 @@ use App\Http\Controllers\AdviseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenController;
-use App\Models\Advise;
 
 /*
 |--------------------------------------------------------------------------
