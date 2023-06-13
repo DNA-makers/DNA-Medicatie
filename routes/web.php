@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdviseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GenController;
+use App\Models\Advise;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,9 @@ Route::get('/example', function (Request $request) {
 //Gen
 Route::get('/gen', [GenController::class, 'gen']);
 Route::get('/gen/{id}', [GenController::class, 'gen_specific']);
+
+
+Route::get('/advise/{gen_code}', [AdviseController::class, 'advise']);
 
 //Users
 Route::get('/user', [UserController::class, 'user']);

@@ -22,6 +22,11 @@ class Gen extends Model
         return $this->hasMany(Variant::class, 'gen_id');
     }
 
+    public function advice()
+    {
+        return $this->hasMany(Advise::class, 'gen_id');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
