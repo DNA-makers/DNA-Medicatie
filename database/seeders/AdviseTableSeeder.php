@@ -19,14 +19,17 @@ class AdviseTableSeeder extends Seeder
         $gens = Gen::all();
 
         foreach ($gens as $gen) {
-            DB::table('advise')->insert([
-                'gen_id' => $gen->id,
-                'title' => $faker->sentence,
-                'gen_code' => $gen->gen_code,
-                'advise' => $faker->paragraph,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            $numberOfAdvises = 5; 
+            for ($i = 0; $i < $numberOfAdvises; $i++) {
+                DB::table('advise')->insert([
+                    'gen_id' => $gen->id,
+                    'title' => $faker->sentence,
+                    'gen_code' => $gen->gen_code,
+                    'advise' => $faker->paragraph,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
         
     }
