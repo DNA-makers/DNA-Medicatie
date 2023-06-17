@@ -13,9 +13,9 @@ class AdminController extends Controller
 
 
         if (Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Logged in succesfully'], 200);
+            return response()->json(['message' => 'Succesvol ingelogd'], 200);
         } else {
-            return response()->json(['message' => 'Invalid credentials'], 400);
+            return response()->json(['message' => 'Email en/of wachtwoord is onjuist'], 400);
         }
     }
 }
