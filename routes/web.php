@@ -31,6 +31,7 @@ Route::get('/gen', [GenController::class, 'gen']);
 Route::get('/gen/{id}', [GenController::class, 'gen_specific']);
 
 
+Route::get('/advise', [AdviseController::class, 'all_advise']);
 Route::get('/advise/{gen_code}', [AdviseController::class, 'advise']);
 
 //Users
