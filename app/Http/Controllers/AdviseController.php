@@ -11,4 +11,10 @@ class AdviseController extends Controller
         $advise = Advise::where('gen_code', $gen_code)->get();
         return $advise;
     }
+
+    public function all_advise() {
+        $advise = Advise::all();
+        return $advise;
+    }
+
 }
