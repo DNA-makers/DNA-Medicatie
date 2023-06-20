@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('advise', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('gen_id')->constrained('gen')->onDelete('cascade');
+            // $table->foreignId('gen_id')->constrained('gen')->onDelete('cascade');
             $table->string('title');
             $table->string('gen_code');
             $table->text('advise');

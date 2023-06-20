@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Gen;
 use Faker\Factory as Faker;
 
 class GenTableSeeder extends Seeder
@@ -14,19 +15,23 @@ class GenTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // Gen::truncate(); 
         $faker = Faker::create();
-        $userIds = DB::table('users')->pluck('id')->toArray();
-
-        for ($i = 0; $i < 10; $i++) {
-            DB::table('gen')->insert([
-                'user_id' => $faker->randomElement($userIds),
-                'gen_code' => $faker->unique()->regexify('[A-Z0-9]{8}'),
-                'diplotype' => $faker->randomElement(['AABBCC', 'AABBCD', 'AABBDD']),
-                'phenotype' => $faker->sentence(4),
-                'divergent' => $faker->boolean,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        $csvData = fopen(base_path('database/csv/gen-overzicht.csv'), 'r');
+        $transRow = true;
+        while (($data = fgetcsv($csvData, 555, ',')) !== false) {
+            if (!$transRow) {
+                Gen::create([
+                    // 'user_id' => $faker->randomElement($userIds),
+                    'gen_code' => $data['0'],
+                    'diplotype' => $data['1'],
+                    'phenotype' => $data['2'],
+                    'divergent' => $faker->boolean,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+            $transRow = false;
+        }        
     }
 }
