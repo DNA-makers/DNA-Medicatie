@@ -27,10 +27,10 @@ class HospitalTableSeeder extends Seeder
                 'website_link' => 'https://www.amc.nl/web/home.htm'
             ],
             [
-                'name' => 'EMC',
-                'address' => 'Dr. Molewaterplein 40, 3015 GD Rotterdam',
-                'phone_number' => '010 704 0704',
-                'website_link' => 'https://www.erasmusmc.nl/nl-nl/'
+                'name' => 'Maasstad Ziekenhuis',
+                'address' => 'Maasstadweg 21, 3079 DZ Rotterdam',
+                'phone_number' => '010 291 1911',
+                'website_link' => 'https://www.maasstadziekenhuis.nl/'
             ]
         ];
 
